@@ -9,7 +9,7 @@
 #
 
 class Message < ApplicationRecord
-  has_and_belongs_to_many :tag
+  has_and_belongs_to_many :tags, join_table: :messages_tags
 
   validates :body, presence: true, length: { maximum: 141 }
 end

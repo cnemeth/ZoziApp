@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 20160913183359) do
   end
 
   create_table "messages_tags", id: false, force: :cascade do |t|
-    t.integer "message_id", null: false
-    t.integer "tag_id",     null: false
+    t.integer "message_id"
+    t.integer "tag_id"
     t.index ["message_id"], name: "index_messages_tags_on_message_id", using: :btree
     t.index ["tag_id"], name: "index_messages_tags_on_tag_id", using: :btree
   end
