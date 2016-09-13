@@ -9,4 +9,8 @@
 #
 
 class Tag < ApplicationRecord
+  has_and_belongs_to_many :message
+
+  validates :tag, format: { with: /\A\#{1}\w+\z/,
+    message: "tags must start with '#'" }
 end
