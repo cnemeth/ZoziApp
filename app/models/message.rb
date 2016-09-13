@@ -9,4 +9,7 @@
 #
 
 class Message < ApplicationRecord
+  has_and_belongs_to_many :tag
+
+  validates :body, presence: true, length: { maximum: 141 }
 end
