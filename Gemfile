@@ -34,8 +34,10 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails', '~> 3.5.0.beta4'
+  gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'shoulda'
+  gem 'shoulda-matchers'
   gem 'database_cleaner'
   gem 'simplecov', require: false
 end
