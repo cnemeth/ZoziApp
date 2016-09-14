@@ -4,4 +4,10 @@ Rails.application.routes.draw do
       resources :messages, only: [:index, :create]
     end
   end
+
+  resources :messages, only: [:index] do
+    resources :tags
+  end
+
+  root to: 'messages#index'
 end
