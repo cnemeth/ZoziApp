@@ -12,4 +12,34 @@ RSpec.describe Api::V1::MessagesController, type: :request do
       expect(json.count).to eq 10
     end
   end
+
+   describe "POST /api/v1/messages" do
+     describe "with valid params" do
+       let(:params) {
+         {
+           message: {
+             body: "This message is from #zozi"
+           }
+         }
+       }
+
+       it "creates a message" do
+         post '/api/v1/messages', params
+         expect(last_response.status).to eq 201
+       end
+
+       it "creates a new @message" do
+         expect {
+           post "/api/v1/messages", params
+         }.to change{ Message.count }.by(1)
+       end
+
+       it "creates a new @tag for the message" do
+         expect {
+           post "/api/v1/messages", params
+         }.to change{ Tag.count }.by(1)
+         expect( Message.last.tags.last.tag).to eq '#zozi'
+       end
+     end
+   end
 end
