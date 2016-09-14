@@ -12,6 +12,7 @@ require 'rails_helper'
 
 RSpec.describe Tag, type: :model do
   it { should have_and_belong_to_many(:messages) }
+  it { should validate_uniqueness_of(:tag) }
 
   describe "tag" do
     describe "valid" do
